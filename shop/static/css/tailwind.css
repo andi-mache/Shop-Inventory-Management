@@ -1,0 +1,132 @@
+/* Importing Google Fonts: Nunito and Roboto from Google Fonts.
+   These fonts are specified with various weights and styles. */
+   @import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,700&family=Evo:wght@300;400;500;700;900&display=swap');
+
+   /* Importing Tailwind CSS base, components, and utilities.
+      These are essential for using Tailwind's utility classes. */
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   
+   /* Defining a .card class with Tailwind's utility classes.
+      This class applies a white background, rounded corners, overflow hidden, and a shadow. */
+   .card {
+    @apply relative overflow-hidden shadow-sm bg-puerto_rico-600 rounded-2xl;
+   }
+   
+   /* Defining a .badge class with Tailwind's utility classes.
+      This class applies a secondary color background, text color, font size, font weight, and positioning. */
+   .badge {
+    @apply absolute top-0 p-2 mt-2 ml-2 text-xs font-bold uppercase rounded-full bg-secondary-100 text-secondary-200;
+   }
+   
+   /* Defining a .btn class with Tailwind's utility classes.
+      This class applies rounded corners, padding, font size, font weight, cursor pointer, and hover effects. */
+   .btn {
+    @apply px-4 py-2 text-xs font-bold tracking-wider text-white uppercase cursor-pointer rounded-2xl bg-puerto_rico-950 hover:bg-puerto_rico-800;
+   }
+   
+   /* Defining a .file-ip class with Tailwind's utility classes.
+      This class applies margin, width, text size, and hover effects. */
+   .file-ip {
+    @apply mt-1 inline-block w-full text-sm text-slate-500
+    file:py-2 file:px-4
+    file:rounded-full file:border-0
+    file:text-xs file:font-bold file:tracking-wide
+    file:bg-puerto_rico-950 file:text-white
+    hover:file:bg-puerto_rico-800
+   }
+   
+   /* Defining a .text-field class with Tailwind's utility classes.
+      This class applies margin, width, padding, background color, border, text size, shadow, and focus effects. */
+   .text-field{
+    @apply mt-1 block w-full px-4 py-2 bg-secondary-800 border border-puerto_rico-950 rounded-md text-sm shadow-sm placeholder-slate-400
+    focus:outline-none focus:border-puerto_rico-500 focus:ring-1 focus:ring-sky-500
+    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+    invalid:border-red-500 invalid:text-red-600
+    focus:invalid:border-red-500 focus:invalid:ring-red-500
+   }
+   
+   /* Defining a .helptext class with Tailwind's utility classes.
+      This class hides the element by default. */
+   .helptext{
+    @apply hidden
+   }
+   
+   /* Customizing the scrollbar appearance for WebKit browsers.
+      This includes setting the width, track color, and thumb color. */
+   ::-webkit-scrollbar {
+    width: 10px;
+   }
+   
+   ::-webkit-scrollbar-track {
+    background: #0caca4;
+   }
+   
+   ::-webkit-scrollbar-thumb {
+    background: #006d7b;
+   }
+   
+   ::-webkit-scrollbar-thumb:hover {
+    background: rgb(22, 151, 160);
+   }
+   
+   /* Defining a .slider class for customizing a slider input.
+      This includes removing default appearance, setting dimensions, and styling. */
+   .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 50px;
+    width: 100%;
+    height: 5px;
+    background: #023130;
+    outline: none;
+    opacity: 0.8;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+   }
+   
+   /* Defining hover state for the .slider class. */
+   .slider:hover {
+    opacity: 1;
+   }
+   
+   /* Customizing the slider thumb for WebKit browsers. */
+   .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #023130;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+   }
+   
+   /* Customizing the slider thumb for Mozilla Firefox. */
+   .slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background: #023130;
+    cursor: pointer;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+   }
+   
+   /* Defining a .grids class for creating a grid layout.
+      This includes setting the display to grid and defining grid template rows and columns. */
+   .grids{
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit,minmax(192px,1fr));
+   }
+   

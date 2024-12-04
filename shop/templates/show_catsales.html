@@ -1,3 +1,4 @@
+
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -29,7 +30,7 @@
 
   <body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
 
-    <!-- ======= Header ======= -->
+    <!-- ======= Header ======= 
     <header id="header" class="fixed-top d-flex align-items-center">
       <div class="container d-flex align-items-center justify-content-between">
 
@@ -47,11 +48,49 @@
                   <li><a href="/show_catsales">Sales Records</a></li>
             </ul>
           </li>
-        </nav><!-- .navbar -->
+        </nav><!-- .navbar 
 
       </div>
     </header><!-- End Header -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+  
+        <div class="logo">
+          <h1 class="text-light"><a href="index.html"><span>Shop Inventory Management</span></a></h1>
+        </div>
+  
+        <nav id="navbar" class="navbar">
+      <ul class="relative flex items-center justify-around w-3/6 list-none">
+        {% if user.is_authenticated %}
+        <li class="dropdown"><a><span>R E C O R D S</span><i class="bi bi-chevron-down"></i></a>
+          <ul>
+              <li><a href="/show">Category Records</a></li>
+            <li><a href="/show_items">Item Records</a></li>
+                <li><a href="/show_catsales">Sales Records</a></li>
+          </ul>
+        </li>
+        {% endif%}
+        {% if user.is_superuser %}
+        <li class="dropdown">
+          <a
+            ><span>A D M I N CMD</span><i class="bi bi-chevron-down"></i
+          ></a>
+          <ul>
+            <li><a href="/update-profile">Update profile</a></li>
+            <li><a href="/register">Register User</a></li>
+          </ul>
+        </li>
 
+        {%endif%}
+        {% if user.is_authenticated %}
+        <li class="text-secondary-100"><a  href="{% url 'logout'%}">Logout</a></li>
+        {% else %}
+        <li class=""><a  href="{% url 'login'%}">Login</a></li> 
+        {% endif%}
+      </ul>
+    </nav>
+       </div>
+    </header><!-- End Header -->
     <main id="main">
 
       <!-- ======= Breadcrumbs Section ======= -->
@@ -65,7 +104,7 @@
 
         </div>
       </section><!-- End Breadcrumbs Section -->
-        <section class="inner-page">
+        <section class="inner-page align-items-center">
         <div class="container">
           <div >
 
@@ -80,7 +119,8 @@
     <th>Month</th>
     <th>Sales</th>
     <th>Profit</th>
-      <th>Category ID</th>
+    <th>Category ID</th>
+    <th>Category name</th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -90,17 +130,18 @@
 
     <td>{{ profit_sales.year}}</td>
     <td>{{ profit_sales.month}}</td>
-      <td>{{ profit_sales.sales}}</td>
-      <td>{{ profit_sales.profit}}</td>
-        <td>{{ profit_sales.cat_sales}}</td>
+    <td>{{ profit_sales.sales}}</td>
+    <td>{{ profit_sales.profit}}</td>
+    <td>{{ profit_sales.cat_sales}}</td>
+    <td>{{ profit_sales.catgars_name}}</td>
     <td>
-      <a href="/delete_catsales/{{ profit_sales.id }}"><span class="btn btn-outline-warning btn-sm">Delete</span> </a>
+      <a href="/delete_catsales/{{ profit_sales.id }}"><span class="btn btn-outline-primary btn-sm">Delete</span> </a>
     </td>
   </tr>
   {% endfor %}
   </tbody>
 </table>
-<center><a href="/user_catsales" class="btn btn-warning">Add New Record</a></center>
+<center><a href="/user_catsales" class="btn btn-primary">Add New Record</a></center>
  </div>
 
       </section>
@@ -108,7 +149,7 @@
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <footer id="footer">
+    <footer id="footer" class="fixed-bottom">
 
 
 
@@ -116,7 +157,7 @@
 
       <div class="container py-4">
         <div class="copyright">
-          © Copyright <strong><span>VARUN</span></strong>. All Rights Reserved
+          © Copyright <strong><span>ADRIAN</span></strong>. All Rights Reserved
         </div>
 
       </div>

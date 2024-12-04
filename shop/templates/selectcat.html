@@ -1,3 +1,4 @@
+
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -29,7 +30,7 @@
   
   <body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
   
-    <!-- ======= Header ======= -->
+    <!-- ======= Header ======= 
     <header id="header" class="fixed-top d-flex align-items-center">
       <div class="container d-flex align-items-center justify-content-between">
   
@@ -47,11 +48,50 @@
                   <li><a href="/show_catsales">Sales Records</a></li>
             </ul>
           </li>
-        </nav><!-- .navbar -->
+        </nav><!-- .navbar 
   
       </div>
     </header><!-- End Header -->
   
+    <header id="header" class="fixed-top d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+  
+        <div class="logo">
+          <h1 class="text-light"><a href="index.html"><span>Shop Inventory Management</span></a></h1>
+        </div>
+  
+        <nav id="navbar" class="navbar">
+      <ul class="relative flex items-center justify-around w-3/6 list-none">
+        {% if user.is_authenticated %}
+        <li class="dropdown"><a><span>R E C O R D S</span><i class="bi bi-chevron-down"></i></a>
+          <ul>
+              <li><a href="/show">Category Records</a></li>
+            <li><a href="/show_items">Item Records</a></li>
+                <li><a href="/show_catsales">Sales Records</a></li>
+          </ul>
+        </li>
+        {% endif%}
+        {% if user.is_superuser %}
+        <li class="dropdown">
+          <a
+            ><span>A D M I N CMD</span><i class="bi bi-chevron-down"></i
+          ></a>
+          <ul>
+            <li><a href="/update-profile">Update profile</a></li>
+            <li><a href="/register">Register User</a></li>
+          </ul>
+        </li>
+
+        {%endif%}
+        {% if user.is_authenticated %}
+        <li class="text-secondary-100"><a  href="{% url 'logout'%}">Logout</a></li>
+        {% else %}
+        <li class=""><a  href="{% url 'login'%}">Login</a></li> 
+        {% endif%}
+      </ul>
+    </nav>
+       </div>
+    </header><!-- End Header -->
     <main id="main">
   
       <!-- ======= Breadcrumbs Section ======= -->
@@ -66,7 +106,7 @@
         </div>
       </section><!-- End Breadcrumbs Section -->
   
-      <section class="inner-page">
+      <section class="inner-page align-items-center ">
       <form method="POST" class="post-form" action="/user">
     {% csrf_token %}
     <div class="form-group row">
@@ -76,13 +116,13 @@
         </div>
     </div><br>
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbspCategory Id :</label>
+        <label class="col-sm-2 col-form-label">Category Id :</label>
         <div class="col-sm-4">
             {{ form.category_id }}
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbspCategory Name :</label>
+        <label class="col-sm-2 col-form-label">Category Name :</label>
         <div class="col-sm-4">
             {{ form.cat_name }}
         </div>
@@ -90,7 +130,7 @@
     <div class="form-group row">
         <label class="col-sm-2 col-form-label"></label>
         <div class="col-sm-4">
-            <button type="submit" class="btn btn-warning">Submit</button>
+            <button type="submit" class="btn btn-secondary">Submit</button>
         </div>
     </div>
 
@@ -99,7 +139,7 @@
     </main><!-- End #main -->
   
     <!-- ======= Footer ======= -->
-    <footer id="footer">
+    <footer id="footer" class="fixed-bottom">
   
       
   
@@ -107,7 +147,7 @@
   
       <div class="container py-4">
         <div class="copyright">
-          © Copyright <strong><span>VARUN</span></strong>. All Rights Reserved
+          © Copyright <strong><span>ADRIAN</span></strong>. All Rights Reserved
         </div>
         
       </div>

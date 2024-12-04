@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+
+    <title>Shop Inventory Management</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+        <!-- Favicons -->
+        <link href="/static/s.png" rel="icon">
+         <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+  
+ <!-- Vendor CSS Files -->
+ <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
+ <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+ <link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+ <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+ <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+ <!-- Template Main CSS File -->
+ <link href="/static/assets/css/style.css" rel="stylesheet">
+
+
+
+  </head>
+
+  <body class="overflow-x-hidden font-body">
+    <header id="header" class=" d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+  
+        <div class="logo">
+          <h1 class="text-light"><a href="index.html"><span>Shop Inventory Management</span></a></h1>
+        </div>
+  
+        <nav id="navbar" class="navbar">
+      <ul class="relative flex items-center justify-around w-3/6 list-none">
+        {% if user.is_authenticated %}
+        <li class="dropdown"><a><span>R E C O R D S</span><i class="bi bi-chevron-down"></i></a>
+          <ul>
+              <li><a href="/show">Category Records</a></li>
+            <li><a href="/show_items">Item Records</a></li>
+                <li><a href="/show_catsales">Sales Records</a></li>
+          </ul>
+        </li>
+        {% endif%}
+        {% if user.is_authenticated and user.is_superuser %}
+        <li class="dropdown">
+          <a
+            ><span>A D M I N CMD</span><i class="bi bi-chevron-down"></i
+          ></a>
+          <ul>
+            <li><a href="/update-profile">Update profiles</a></li>
+            <li><a href="/register">Register User</a></li>
+          </ul>
+        </li>
+        {%else%}
+
+        <li></li>
+
+        {%endif%}
+        {% if user.is_authenticated %}
+        <li class="text-alert"><a  href="{% url 'logout'%}">Logout</a></li>
+        {% else %}
+        <li class=""><a  href="{% url 'login'%}">Login</a></li> 
+        {% endif%}
+      </ul>
+    </nav>
+       </div>
+    </header><!-- End Header -->
+  
+    {%if messages%}
+      {% for message in messages %}
+          {% if message.tags == 'success' %}
+              <div class="relative grid w-full top-14 place-items-center">
+                <div class="flex items-center p-2 leading-none text-indigo-100 bg-green-400 rounded-full" role="alert">
+                  <span class="flex px-2 py-1 mr-3 text-xs font-bold uppercase rounded-full bg-secondary-700">{{message.tags}}</span>
+                  <span class="flex-auto mr-2 font-semibold text-left text-puerto_rico-100">{{message}}</span>
+                </div>
+              </div>      
+          {% elif message.tags == 'info' %}
+            <div class="relative grid w-full top-14 place-items-center">
+              <div class="flex items-center p-2 leading-none text-indigo-100 bg-gray-300 rounded-full" role="alert">
+                <span class="flex px-2 py-1 mr-3 text-xs font-bold uppercase rounded-full bg-puerto_rico-950">{{message.tags}}</span>
+                <span class="flex-auto mr-2 font-semibold text-left text-puerto_rico-100">{{message}}</span>
+              </div>
+            </div>
+          {% endif %}
+      {% endfor %}
+    {% endif %}
+    <main class="relative top-12">
+        {% block content %}
+        <!-- for childs -->
+        {% endblock content %}
+    </main>
+  </body>
+  <script>
+    const showChange =(e)=>{
+      let span = document.querySelector('.currSpan')
+      let alert = document.querySelector('.alert')
+      if (span){
+        span.innerHTML = `${e.target.value}`
+      }
+      if(alert) alert.innerText = ""
+      
+      if ( e.target.value<=0){
+        alert.innerText = "Invalid value."
+      }
+    }
+    let sn = document.querySelectorAll('.sn')
+    if (sn){
+      sn.forEach((elem,id)=>elem.innerHTML=`${id+1}`)
+    }
+  </script>
+</html>

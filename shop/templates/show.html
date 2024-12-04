@@ -1,3 +1,5 @@
+
+
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -40,7 +42,7 @@
 
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a class="nav-link scrollto " href="/">Home</a></li>
+            <li><a class="nav-link scrollto " href="/dashboard/">Home</a></li>
 
 
             <li class="dropdown"><a><span>R E C O R D S</span> <i class="bi bi-chevron-down"></i></a>
@@ -50,6 +52,18 @@
                   <li><a href="/show_catsales">Sales Records</a></li>
             </ul>
           </li>
+          {% if user.is_superuser %}
+          <li class="dropdown">
+            <a
+              ><span>A D M I N CMD</span><i class="bi bi-chevron-down"></i
+            ></a>
+            <ul>
+              <li><a href="/update-profile">Update profile</a></li>
+              <li><a href="/register">Register User</a></li>
+            </ul>
+          </li>
+
+          {%endif%}
         </nav>
 
 
@@ -73,7 +87,7 @@
 
         </div>
       </section><!-- End Breadcrumbs Section -->
-        <section class="inner-page">
+        <section class="inner-page align-items-center">
         <div class="container">
           <div >
 
@@ -97,23 +111,23 @@
     <td>{{ categories.category_id}}</td>
     <td>{{ categories.cat_name}}</td>
     <td>
-        <a href="/user_items"><span class="btn btn-outline-warning btn-sm">Add Items</span> </a>
-        <a href="/user_catsales"><span class="btn btn-outline-warning btn-sm">Add Sales Info</span> </a>
-      <a href="/edit/{{ categories.id }}"><span class="btn btn-outline-warning btn-sm">Edit</span> </a>
-      <a href="/delete/{{ categories.id }}"><span class="btn btn-outline-warning btn-sm">Delete</span> </a>
+        <a href="/user_items"><span class="btn btn-outline-primary btn-sm">Add Items</span> </a>
+        <a href="/user_catsales"><span class="btn btn-outline-primary btn-sm">Add Sales Info</span> </a>
+      <a href="/edit/{{ categories.id }}"><span class="btn btn-outline-primary btn-sm">Edit</span> </a>
+      <a href="/delete/{{ categories.id }}"><span class="btn btn-outline-primary btn-sm">Delete</span> </a>
     </td>
   </tr>
   {% endfor %}
   </tbody>
 </table>
-<center><a href="/user" class="btn btn-warning">Add New Record</a></center>
+<center><a href="/user" class="btn btn-secondary">Add New Record</a></center>
  </div>
         </section>
 
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <footer id="footer">
+    <footer id="footer" class="fixed-bottom">
 
 
 
@@ -121,7 +135,7 @@
 
       <div class="container py-4">
         <div class="copyright">
-          © Copyright <strong><span>VARUN</span></strong>. All Rights Reserved
+          © Copyright <strong><span>ADRIAN</span></strong>. All Rights Reserved
         </div>
 
       </div>
