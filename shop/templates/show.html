@@ -1,54 +1,46 @@
 {% extends 'core/base.html' %}
 {% block content %}
-  <div id="login-card bg-dark">
+<div class=" bg-dark login-card">
+<!-- ======= Breadcrumbs Section ======= -->
+  <section class="breadcrumbs">
+    <div class="container">
 
-      <!-- ======= Breadcrumbs Section ======= -->
-    <section class="breadcrumbs">
-      <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>RECORDS</h2>
-
-        </div>
-
+      <div class="d-flex justify-content-center align-items-center">
+        <h2>RECORDS</h2>
       </div>
-    </section><!-- End Breadcrumbs Section -->
-    <section class="inner-page align-items-center">
-      <div class="container">
-        <div >
 
-
-
-
-          <table class="table table-stripped table-bordered table-sm">
-            <thead class="thead-dark">
+    </div>
+  </section><!-- End Breadcrumbs Section -->
+  <section class="inner-page  align-self-center">
+    <div class="container">
+      <div >
+        <table class="table table-stripped table-dark table-bordered">
+          <thead>
+            <tr>
+              <th>Category Database ID</th>
+              <th>Category Shop ID</th>
+              <th>Category Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for categories in materials %}
               <tr>
-                <th>Category Database ID</th>
-                <th>Category Shop ID</th>
-                <th>Category Name</th>
-
-                <th>Actions</th>
+                <td>{{ categories.id}}</td>
+                <td>{{ categories.category_id}}</td>
+                <td>{{ categories.cat_name}}</td>
+                <td>
+                  <a href="/user_items"><span class="btn btn-success btn-sm">Add Items</span> </a>
+                  <a href="/user_catsales"><span class="btn btn-success  btn-sm">Add Sales Info</span> </a>
+                  <a href="/edit/{{ categories.id }}"><span class="btn btn-warning btn-sm">Edit</span> </a>
+                  <a href="/delete/{{ categories.id }}"><span class="btn btn-danger btn-sm">Delete</span> </a>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {% for categories in materials %}
-                <tr>
-                  <td>{{ categories.id}}</td>
-                  <td>{{ categories.category_id}}</td>
-                  <td>{{ categories.cat_name}}</td>
-                  <td>
-                    <a href="/user_items"><span class="btn btn-outline-primary btn-sm">Add Items</span> </a>
-                    <a href="/user_catsales"><span class="btn btn-outline-primary btn-sm">Add Sales Info</span> </a>
-                    <a href="/edit/{{ categories.id }}"><span class="btn btn-outline-primary btn-sm">Edit</span> </a>
-                    <a href="/delete/{{ categories.id }}"><span class="btn btn-outline-primary btn-sm">Delete</span> </a>
-                  </td>
-                </tr>
               {% endfor %}
             </tbody>
           </table>
-          <center><a href="/user" class="btn btn-secondary">Add New Record</a></center>
+          <center><a href="/user" class="btn btn-primary">Add New Record</a></center>
         </div>
       </section>
-
-    </div><!-- End #main -->
+</div><!-- End #main -->
 {% endblock content %}
