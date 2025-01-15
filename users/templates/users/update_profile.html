@@ -25,8 +25,8 @@
                       <form method="POST" enctype="multipart/form-data">
                           {% csrf_token %}
                           <fieldset>
-                              {{ u_form|crispy }}
-                              {{ p_form|crispy }}
+                              {{ u_form }}
+                              {{ p_form }}
                               <div class="mt-4">
                                   <button type="submit" class="btn btn-primary">Update Profile</button>
                               </div>
