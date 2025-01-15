@@ -1,159 +1,54 @@
-
-
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Shop Inventory Management</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-    <link href="/static/s.png" rel="icon">
-
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="/static/assets/css/style.css" rel="stylesheet">
-
-
-
-  </head>
-
-  <body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
-
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center">
-      <div class="container d-flex align-items-center justify-content-between">
-
-        <div class="logo">
-          <h1 class="text-light"><a href="/"><span>Shop Inventory Management</span></a></h1>
-        </div>
-
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li><a class="nav-link scrollto " href="/dashboard/">Home</a></li>
-
-
-            <li class="dropdown"><a><span>R E C O R D S</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-                <li><a href="/show">Category Records</a></li>
-              <li><a href="/show_items">Item Records</a></li>
-                  <li><a href="/show_catsales">Sales Records</a></li>
-            </ul>
-          </li>
-          {% if user.is_superuser %}
-          <li class="dropdown">
-            <a
-              ><span>A D M I N CMD</span><i class="bi bi-chevron-down"></i
-            ></a>
-            <ul>
-              <li><a href="/update-profile">Update profile</a></li>
-              <li><a href="/register">Register User</a></li>
-            </ul>
-          </li>
-
-          {%endif%}
-        </nav>
-
-
-
-           <!-- <li><a class="getstarted scrollto" >R E C O R D S</a></li>
-
-          <i class="bi mobile-nav-toggle bi-list"></i>
-         .navbar -->
-    </header><!-- End Header -->
-
-    <main id="main">
+{% extends 'core/base.html' %}
+{% block content %}
+  <div id="login-card bg-dark">
 
       <!-- ======= Breadcrumbs Section ======= -->
-      <section class="breadcrumbs">
-        <div class="container">
+    <section class="breadcrumbs">
+      <div class="container">
 
-          <div class="d-flex justify-content-between align-items-center">
-            <h2>RECORDS</h2>
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>RECORDS</h2>
 
-          </div>
-
-        </div>
-      </section><!-- End Breadcrumbs Section -->
-        <section class="inner-page align-items-center">
-        <div class="container">
-          <div >
-
-
-
-
-<table class="table table-stripped table-bordered table-sm">
-  <thead class="thead-dark">
-  <tr>
-      <th>Category Database ID</th>
-    <th>Category Shop ID</th>
-    <th>Category Name</th>
-
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  {% for categories in materials %}
-  <tr>
-      <td>{{ categories.id}}</td>
-    <td>{{ categories.category_id}}</td>
-    <td>{{ categories.cat_name}}</td>
-    <td>
-        <a href="/user_items"><span class="btn btn-outline-primary btn-sm">Add Items</span> </a>
-        <a href="/user_catsales"><span class="btn btn-outline-primary btn-sm">Add Sales Info</span> </a>
-      <a href="/edit/{{ categories.id }}"><span class="btn btn-outline-primary btn-sm">Edit</span> </a>
-      <a href="/delete/{{ categories.id }}"><span class="btn btn-outline-primary btn-sm">Delete</span> </a>
-    </td>
-  </tr>
-  {% endfor %}
-  </tbody>
-</table>
-<center><a href="/user" class="btn btn-secondary">Add New Record</a></center>
- </div>
-        </section>
-
-    </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="fixed-bottom">
-
-
-
-
-
-      <div class="container py-4">
-        <div class="copyright">
-          © Copyright <strong><span>ADRIAN</span></strong>. All Rights Reserved
         </div>
 
       </div>
-    </footer><!-- End Footer -->
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Vendor JS Files -->
-    <script src="/static/assets/vendor/aos/aos.js"></script>
-    <script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="/static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="/static/assets/vendor/php-email-form/validate.js"></script>
-    <script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="/static/assets/js/main.js"></script>
+    </section><!-- End Breadcrumbs Section -->
+    <section class="inner-page align-items-center">
+      <div class="container">
+        <div >
 
 
 
-  </body></html>
+
+          <table class="table table-stripped table-bordered table-sm">
+            <thead class="thead-dark">
+              <tr>
+                <th>Category Database ID</th>
+                <th>Category Shop ID</th>
+                <th>Category Name</th>
+
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for categories in materials %}
+                <tr>
+                  <td>{{ categories.id}}</td>
+                  <td>{{ categories.category_id}}</td>
+                  <td>{{ categories.cat_name}}</td>
+                  <td>
+                    <a href="/user_items"><span class="btn btn-outline-primary btn-sm">Add Items</span> </a>
+                    <a href="/user_catsales"><span class="btn btn-outline-primary btn-sm">Add Sales Info</span> </a>
+                    <a href="/edit/{{ categories.id }}"><span class="btn btn-outline-primary btn-sm">Edit</span> </a>
+                    <a href="/delete/{{ categories.id }}"><span class="btn btn-outline-primary btn-sm">Delete</span> </a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <center><a href="/user" class="btn btn-secondary">Add New Record</a></center>
+        </div>
+      </section>
+
+    </div><!-- End #main -->
+{% endblock content %}

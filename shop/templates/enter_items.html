@@ -1,194 +1,72 @@
+{% extends "core/base.html" %}
 
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Shop Inventory Management</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-    <link href="/static/s.png" rel="icon">
-
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="/static/assets/css/style.css" rel="stylesheet">
-
-
-  </head>
-
-  <body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
-
-    <!-- ======= Header ======= 
-    <header id="header" class="fixed-top d-flex align-items-center">
-      <div class="container d-flex align-items-center justify-content-between">
-
-        <div class="logo">
-          <h1 class="text-light"><a href="/"><span>Store Sales Prediction</span></a></h1>
-        </div>
-
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li><a class="nav-link scrollto " href="/">Home</a></li>
- <li class="dropdown"><a><span>R E C O R D S</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-                <li><a href="/show">Category Records</a></li>
-                <li><a href="/show_items">Item Records</a></li>
-                <li><a href="/show_catsales">Sales Records</a></li>
-            </ul>
-          </li>
-        </nav><!-- .navbar 
-
-      </div>
-    </header><!-- End Header -->
-
-
-    <header id="header" class="fixed-top d-flex align-items-center">
-      <div class="container d-flex align-items-center justify-content-between">
-  
-        <div class="logo">
-          <h1 class="text-light"><a href="index.html"><span>Shop Inventory Management</span></a></h1>
-        </div>
-  
-        <nav id="navbar" class="navbar">
-      <ul class="relative flex items-center justify-around w-3/6 list-none">
-        {% if user.is_authenticated %}
-        <li class="dropdown"><a><span>R E C O R D S</span><i class="bi bi-chevron-down"></i></a>
-          <ul>
-              <li><a href="/show">Category Records</a></li>
-            <li><a href="/show_items">Item Records</a></li>
-                <li><a href="/show_catsales">Sales Records</a></li>
-          </ul>
-        </li>
-        {% endif%}
-        {% if user.is_superuser %}
-        <li class="dropdown">
-          <a
-            ><span>A D M I N CMD</span><i class="bi bi-chevron-down"></i
-          ></a>
-          <ul>
-            <li><a href="/update-profile">Update profile</a></li>
-            <li><a href="/register">Register User</a></li>
-          </ul>
-        </li>
-
-        {%endif%}
-        {% if user.is_authenticated %}
-        <li class="text-secondary-100"><a  href="{% url 'logout'%}">Logout</a></li>
-        {% else %}
-        <li class=""><a  href="{% url 'login'%}">Login</a></li> 
-        {% endif%}
-      </ul>
-    </nav>
-       </div>
-    </header><!-- End Header -->
-
-    <main id="main">
+{% block content%}
+    <div id="bg-dark login-carg">
 
       <!-- ======= Breadcrumbs Section ======= -->
-      <section class="breadcrumbs">
-        <div class="container">
+        <section class="breadcrumbs">
+            <div class="container">
 
-          <div class="d-flex justify-content-between align-items-center">
-            <h2>RECORDS</h2>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>RECORDS</h2>
 
-          </div>
+                </div>
 
-        </div>
-      </section><!-- End Breadcrumbs Section -->
-
-      <section class="inner-page align-items-center">
-          <form method="POST" class="post-form" action="/user_items">
-    {% csrf_token %}
-    <div class="form-group row">
-        <label class="col-sm-1 col-form-label"></label>
-        <div class="col-sm-4">
-            <h3>Enter Item Details : </h3>
-        </div>
-    </div><br>
-
-
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Item Name :</label>
-        <div class="col-sm-4">
-            {{ form.item_name }}
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Price per Unit :</label>
-        <div class="col-sm-4">
-            {{ form.price_per_unit }}
-        </div>
-    </div>
-    <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Item Quantity :</label>
-            <div class="col-sm-4">
-                {{ form.quantity }}
             </div>
-    </div>
-          <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Category id :</label>
-        <div class="col-sm-4">
-            {{ form.cat_gar_id }}
-        </div>
-    </div>
-        <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Category Name :</label>
-      <div class="col-sm-4">
-          {{ form.category_name_id }}
-      </div>
-  </div>
+        </section><!-- End Breadcrumbs Section -->
+
+        <section class="inner-page align-items-center">
+            <form method="POST" class="post-form" action="/user_items">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label class="col-sm-1 col-form-label"></label>
+                    <div class="col-sm-4">
+                        <h3>Enter Item Details : </h3>
+                    </div>
+                </div><br>
 
 
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-4">
-            <button type="submit" class="btn btn-secondary">Submit</button>
-        </div>
-    </div>
-      </section>
-
-    </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="fixed-bottom">
-
-
-
-
-
-      <div class="container py-4">
-        <div class="copyright">
-          © Copyright <strong><span>ADRIAN</span></strong>. All Rights Reserved
-        </div>
-
-      </div>
-    </footer><!-- End Footer -->
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Vendor JS Files -->
-    <script src="/static/assets/vendor/aos/aos.js"></script>
-    <script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="/static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="/static/assets/vendor/php-email-form/validate.js"></script>
-    <script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="/static/assets/js/main.js"></script>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Item Name :</label>
+                    <div class="col-sm-4">
+                        {{ form.item_name }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Price per Unit :</label>
+                    <div class="col-sm-4">
+                        {{ form.price_per_unit }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Item Quantity :</label>
+                    <div class="col-sm-4">
+                        {{ form.quantity }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Category id :</label>
+                    <div class="col-sm-4">
+                        {{ form.cat_gar_id }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Category Name :</label>
+                    <div class="col-sm-4">
+                        {{ form.category_name_id }}
+                    </div>
+                </div>
 
 
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                    </div>
+                </div>
+            </section>
 
-  </body></html>
+        </div><!-- End #main -->
+{% endblock content %}
+
+
